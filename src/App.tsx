@@ -8,7 +8,7 @@ import './App.css';
  */
 interface IState {
   data: ServerRespond[],
-  showGraph: boolean,
+  showGraph: boolean, // sets state of graph to boolean 
 }
 
 /**
@@ -34,7 +34,7 @@ class App extends Component<{}, IState> {
     if (this.state.showGraph){
       return (<Graph data={this.state.data}/>)
     }
-  }
+  } 
 
   /**
    * Get new data from server and update the state with the new data
@@ -47,14 +47,14 @@ class App extends Component<{}, IState> {
       DataStreamer.getData((serverResponds: ServerRespond[])=>{
         this.setState({
           data: serverResponds,
-          showGraph: true 
+          showGraph: true //triggers graph to display went data is recieved
         })
       })
     x++;
     if(x>1000){
       clearInterval(interval)
       }
-    }, 100)
+    }, 100) //interval for updating data with new data 
   }
 
   /**
